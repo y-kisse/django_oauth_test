@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.models import User, Group
 
-admin.authdiscover()
+admin.autodiscover()
 
 from rest_framework import generics, permissions, serializers
 
@@ -53,7 +53,7 @@ class GroupList(generics.ListAPIView):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider'),
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('users/', UserList.as_view()),
     path('users/<pk>/', UserDetails.as_view()),
     path('groups/', GroupList.as_view()),
